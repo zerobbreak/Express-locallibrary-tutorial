@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+  h1 Author: #{author.name}
+  p #{author.lifespan}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Books
+    if author_books.length
+      dl
+        each book in author_books
+          dt
+            a(href=book.url) #{book.title}
+          dd #{book.summary}
+    else
+      p This author has no books.
+
+  hr
+  div(style='display: flex; align-items: center; gap: 20px; padding: 10px')
+    p(style='background-color: #050505; padding: 20px; border-radius: 5px;')
+      a(style='color: white')(href=author.url+'/delete') Delete Author
+    p(style='background-color: #050505; padding: 20px; border-radius: 5px;')
+      a(style='color: white')(href=author.url+'/update') Update Author
+
+      
